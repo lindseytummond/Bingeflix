@@ -1,14 +1,11 @@
 $(document).ready (function (){
-
   // localStorage.setItem('myCat', 'Tom');
   // console.log(window.localStorage)
-
   // globally set userId
   let userId = window.localStorage.getItem("user")
   // // let userId = localStorage.getItem(userId)
   console.log(userId)
   console.log(typeof userId)
-
   // // redirect user to login if user isn't found in localStorage -- for handling refreshes
   // let authUser = function() {
   //   if (!window.localStorage.getItem("user")) {
@@ -17,10 +14,8 @@ $(document).ready (function (){
   //   } else {
   //     let path = window.location.pathname;
   //     renderContent(path)
-  
   //   }
   // }
-  
   // checks if an object is empty e.g: let emptyObj = {}
   let isObjEmpty = function(obj) {
     for (let key in obj) {
@@ -30,7 +25,6 @@ $(document).ready (function (){
     }
     return true;
   }
-  
   // render Content based on argument
   // in this case, content = window.location.pathname
   let renderContent = function(content){
@@ -67,37 +61,49 @@ $(document).ready (function (){
         })
     }
   }
-  
   // function to render display components based on data sent through reviews parameter
   let renderReviews = function(reviews) {
-    let content = $(".contents")
-    content.empty().append($("<h4>").text("Reviews List"), $("<hr>"))
+    let content = $("#totReviews")
+    content.empty()
+   // console.log(reviews)
+    //let content = $("#totReviews")
+    // content.empty().append($("<h4>").text("Reviews List"), $("<hr>"))
+    // content.append($("<h4>").text("Reviews List"), $("<hr>"))
     reviews.forEach(function(review) {
+      console.log(review)
       let cardbody = $("<div>").addClass("card-body")
       let title = $("<h5>").addClass("mb-0").text(review.title)
-      let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review.post.email}`)
+      // let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review.post.email}`)
       let description = $("<p>").addClass("card-text").text(review.description)
       let btn = $("<button>").addClass("btn btn-dark attend").data("id", review.id).text("Following")
-  
+      cardbody.append(title, description, btn)
       // get all member information for specific review from the server
-      getMembers(review.id).then(function(members) {
-        let guests = $("<div>").addClass("ttip ml-auto").text("Following: " + members.length)
-        let tooltip = $("<span>").addClass("ttiptext")
-        let guestlist = $("<ul>").addClass("list-group")
-        members.forEach(function(member) {
-          let li = $("<li>").addClass("list-group-item text-dark").text(member.User.email)
-          guestlist.append(li)
-        })
-        tooltip.append(guestlist)
-        guests.append(tooltip)
-        post.append(guests);
-        cardbody.append(title, post, $("<hr>"), description, btn)
-        let card = $("<div>").addClass("card mb-3").append(cardbody)
-        content.append(card)
-      })
+      // getMembers(review.id).then(function(members) {
+      //   console.log("MEMBERS:", members)
+      //   let guests = $("<div>").addClass("ttip ml-auto").text("Following: " + members.length)
+      //   let tooltip = $("<span>").addClass("ttiptext")
+      //   let guestlist = $("<ul>").addClass("list-group")
+      //   members.forEach(function(member) {
+      //     let li = $("<li>").addClass("list-group-item text-dark").text(member.User.email)
+      //     guestlist.append(li)
+      //   })
+      //   tooltip.append(guestlist)
+      //   guests.append(tooltip)
+      //   post.append(guests);
+      //   cardbody.append(title, post, $("<hr>"), description, btn)
+      //   let card = $("<div>")
+      //   card.addClass("card mb-3")
+      //   card.append(cardbody)
+      //   console.log(card)
+      //   content.append(card)
+      // })
+      let card = $("<div>")
+      card.addClass("card mb-3")
+      card.append(cardbody)
+      console.log(card)
+      content.append(card)
     })
   }
-  
   // function to render reviews that the user is following based on data sent through reviews parameter
   let renderReviewsFollowing = function(reviews) {
     console.log("REVIEWS", reviews)
@@ -126,7 +132,6 @@ $(document).ready (function (){
       })
     })
   }
-  
   // function to render reviews that the user has created
   let renderMyReviews = function(reviews) {
     let content = $(".contents")
@@ -147,7 +152,6 @@ $(document).ready (function (){
         autocomplete: "description"
       }).val(review.description)
       let descriptionDiv = $("<div>").addClass("form-group").append($("<label>").text("Review Description"), description)
-  
       let btn = $("<button>").addClass("mr-3 btn btn-dark update-event").attr('id', 'update-btn').data("id", review.id).text("Edit")
       let btn2 = $("<button>").addClass("btn btn-dark delete").data("id", review.id).text("Delete")
       let form = $("<form>").append(titleDiv, descriptionDiv, btn, btn2)
@@ -155,7 +159,6 @@ $(document).ready (function (){
       content.append(card)
     })
   }
-  
   // function to render components for the create review display
   let renderCreatePage = function() {
     let content = $(".contents")
@@ -176,7 +179,6 @@ $(document).ready (function (){
     let form = $("<form>").append(titleDiv, descriptionDiv, btn)
     content.empty().append($("<h4>").text("Create a Review"), $("<hr>"), form)
   }
-  
   // function to render components for the side nav display
   let renderSideNav = function() {
     let sideNav = $(".sidenav");
@@ -191,7 +193,6 @@ $(document).ready (function (){
     let ul = $("<ul>").addClass("nav flex-column").append(li1, li2, li3, li4)
     sideNav.empty().append(ul)
   }
-  
   // function to render the components for the profile page
   let renderProfilePage = function() {
     let contents = $(".contents");
@@ -232,32 +233,29 @@ $(document).ready (function (){
       let form = $("<form>").append(div1, div2, div3, div4, button);
       contents.empty();
       contents.append(h4, form);
-  
     })
   }
-  
+
   // API CALLS
   let getReviewInfo = function() {
+    console.log("getreview")
     return $.ajax({
-      url: "/api/tvreview",
+      url: "/api/review",
       type: "GET"
     })
   }
-  
   let getReviewsByUserId = function(id) {
     return $.ajax({
       url: "/api/user/" + id + "/reviews",
       type: "GET"
     })
   }
-  
   let getReviewsFollowing = function(id) {
     return $.ajax({
       url: "/api/user/" + id + "/following",
       type: "GET"
     })
   }
-  
   let createReview = function(data) {
     return $.ajax({
       url: "/api/review",
@@ -265,7 +263,6 @@ $(document).ready (function (){
       data: data
     })
   }
-  
   let followReview = function(data) {
     return $.ajax({
       url: "/api/follow/",
@@ -273,7 +270,6 @@ $(document).ready (function (){
       data: data
     })
   }
-  
   let unfollowReview = function(data) {
     return $.ajax({
       url: "/api/follow/",
@@ -281,7 +277,6 @@ $(document).ready (function (){
       data: data
     })
   }
-  
   let updateReview = function(id, data){
     return $.ajax({
       url: "/api/review/" + id,
@@ -289,21 +284,18 @@ $(document).ready (function (){
       data: data
     })
   }
-  
   let deleteReview = function(id) {
     return $.ajax({
       url: "/api/review/" + id,
       type: "DELETE"
     })
   }
-  
   let getUserInfo = function(userId) {
     return $.ajax({
       url: "/api/user/" + userId,
       type: "GET",
     })
   }
-  
   let saveUserInfo = function(data) {
     return $.ajax({
       url: "/api/user/" + userId,
@@ -311,19 +303,14 @@ $(document).ready (function (){
       data: data
     })
   }
-  
   let getMembers = function(reviewId) {
     return $.ajax({
       url: "/api/review/" + reviewId + "/members",
       type: "GET"
     })
   }
-  
   // ----- Event Listeners
-  
   // $(document).on("ready", authUser())
-
-  
   // -- Nav Links
   // logout link
   $(".logout").on("click", function(review) {
@@ -331,7 +318,6 @@ $(document).ready (function (){
     window.localStorage.removeItem("user");
     window.location.reload();
   })
-  
   // create review button
   $(document).on("click", "#create-review-btn", function(review) {
     console.log('button clicked')
@@ -346,15 +332,13 @@ $(document).ready (function (){
       let data = {
         title: reviewTitle,
         description: reviewDescription,
-        postId: userId
+        // postId: userId
       }
-      
       createReview(data).then(function() {
         window.location.replace("./myreviews")
       })
     }
   })
-  
   // update button in profile component
   $(document).on("click", ".update-user", function(review) {
     review.preventDefault();
@@ -381,7 +365,6 @@ $(document).ready (function (){
       })
     }
   })
-  
   // follow button in view reviews component
   $(document).on("click", "button.follow", function(review) {
     review.preventDefault();
@@ -400,7 +383,6 @@ $(document).ready (function (){
       }
     })
   })
-  
   // delete button in my reviews component
   $(document).on("click", "button.delete", function(review) {
     review.preventDefault();
@@ -410,7 +392,6 @@ $(document).ready (function (){
       window.location.replace("./myreviews")
     })
   })
-  
   // unfollow button in following component
   $(document).on("click", "button.unfollow", function(review) {
     review.preventDefault();
@@ -424,7 +405,6 @@ $(document).ready (function (){
       window.location.replace("./following")
     })
   })
-  
   // update button in my reviews component
   // $(document).on("click", "button.update-review", function(review) {
   $(document).on("click", "#update-btn", function(review) {
@@ -439,9 +419,7 @@ $(document).ready (function (){
     updateReview(reviewId, data).then(function() {
       window.location.replace("./myreviews")
     })
-  
   })
-  
   let path = window.location.pathname;
       renderContent(path)
     // authUser()
