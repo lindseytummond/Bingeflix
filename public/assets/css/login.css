@@ -3,6 +3,7 @@
 body{
 background-image: url("../images/6243.jpg");   
 font-family: 'Amatic SC', cursive;
+font-size: large;
 }
 
 .container {
@@ -30,4 +31,7 @@ h2 {
 .btn-default {
     margin-left: 80px;
     margin-top: 13px;
+}
+#here {
+    color: whitesmoke
 }

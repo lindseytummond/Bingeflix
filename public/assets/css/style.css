@@ -12,6 +12,10 @@ body {
     width: 550px;
 }
 
+#outline {
+    background-color: white;
+}
+
 .container {
     font-weight: bold;
     text-align: center;

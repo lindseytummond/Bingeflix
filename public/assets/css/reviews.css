@@ -2,20 +2,24 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Amatic SC', cursive;
-    font-weight: 400;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
-    background-color: rgb(193, 175, 230);
+    /* font-weight: 400; */
+    background-color: #644E90;
     background-repeat: repeat-x;
-    font-size:25px;
+}
+
+#outline {
+    background-color: white;
 }
 
 .container {
     font-weight: bold;
     text-align: center;
     font-size: 25px;
+}
+
+.search-btn {
+    background-color:  #644E90;
+    color: white;
 }
 
 h1 {
@@ -136,7 +140,10 @@ input[type=text]:focus {
     margin: 0 2%;
     box-shadow: 0 20px 30px rgba(0,0,0,.1);
     line-height: 0;
+    background-color:  #644E90;
+    color: white;
   }
+  
   .box > span {
     font-size: 25px;
     display: block;
