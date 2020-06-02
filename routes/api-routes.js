@@ -13,7 +13,7 @@ module.exports = function(app) {
     // let userOIbj = { email: res.body.email, password: res.body.password}
     // res.json(userObj);
     // res.json("/members");
-    res.json("/members");
+    res.json(req.user.id);
   });
   // route for signing up a user. user's password is automatically hashed and stored securely based on
   // Sequelize User Model. if user is created successfully, proceed to log the user in,
@@ -83,9 +83,10 @@ module.exports = function(app) {
   // route used to get all reviews made by user
   app.get("/api/user/:id/reviews", function(req,res){
     // search Review table for all reviews where postId matches req.params.id
+    console.log("PARAMS ID", req.params.id)
     db.Review.findAll({
       where: {
-        postId: req.params.id
+        userId: req.params.id
         // UserId: req.params.id
       },
     }).then(function(reviews) {

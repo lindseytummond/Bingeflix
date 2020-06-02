@@ -28,7 +28,7 @@ $(document).ready (function (){
   // render Content based on argument
   // in this case, content = window.location.pathname
   let renderContent = function(content){
-    console.log(content)
+    console.log("render content", content)
     switch (content) {
       case "/myreviews":
         // get reviews made by user from server
@@ -134,6 +134,7 @@ $(document).ready (function (){
   }
   // function to render reviews that the user has created
   let renderMyReviews = function(reviews) {
+    console.log("REVIEWS", reviews)
     let content = $(".contents")
     content.empty().append($("<h4>").text("Reviews I've Created"), $("<hr>"))
     reviews.forEach(function(review) {
@@ -245,6 +246,7 @@ $(document).ready (function (){
     })
   }
   let getReviewsByUserId = function(id) {
+    console.log("REVIEWS BY ID", id)
     return $.ajax({
       url: "/api/user/" + id + "/reviews",
       type: "GET"
@@ -332,7 +334,7 @@ $(document).ready (function (){
       let data = {
         title: reviewTitle,
         description: reviewDescription,
-        // postId: userId
+        UserId: userId
       }
       createReview(data).then(function() {
         window.location.replace("./myreviews")

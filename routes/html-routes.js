@@ -57,6 +57,7 @@ module.exports = function(app) {
   })
   // send default page to all routes that are undefined
   app.get("*", function(req,res) {
+    console.log('CATACH ALL')
     // res.sendFile(path.join(__dirname, "../views/index.html"));
     res.sendFile("/index.html", { root: path.join(__dirname, "../views") })
   })
