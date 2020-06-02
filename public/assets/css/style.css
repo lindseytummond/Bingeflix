@@ -7,6 +7,11 @@ body {
     background-repeat: repeat-x;
 }
 
+#logoHome {
+    height: 350px;
+    width: 550px;
+}
+
 .container {
     font-weight: bold;
     text-align: center;
