@@ -5,6 +5,7 @@ body {
     /* font-weight: 400; */
     background-color: #644E90;
     background-repeat: repeat-x;
+    font-size: 25px;
 }
 
 #logoHome {
@@ -20,6 +21,10 @@ body {
     font-weight: bold;
     text-align: center;
     font-size: 25px;
+}
+
+#create-review-btn {
+    background-color: #644E90;
 }
 
 h1 {

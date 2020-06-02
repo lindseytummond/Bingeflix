@@ -64,10 +64,10 @@ $(document).ready (function (){
   // function to render display components based on data sent through reviews parameter
   let renderReviews = function(reviews) {
     let content = $("#totReviews")
-    content.empty()
+    // content.empty()
    // console.log(reviews)
     //let content = $("#totReviews")
-    // content.empty().append($("<h4>").text("Reviews List"), $("<hr>"))
+    content.empty().append($("<h4>").text("Reviews List"), $("<hr>"))
     // content.append($("<h4>").text("Reviews List"), $("<hr>"))
     reviews.forEach(function(review) {
       console.log(review)
