@@ -1,12 +1,8 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Sigmar One', cursive;
-    font-weight: 400;
-    /* margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px; */
+    font-family: 'Amatic SC', cursive;
+    /* font-weight: 400; */
     background-color: #644E90;
     background-repeat: repeat-x;
 }
