@@ -70,13 +70,13 @@ $(document).ready (function (){
     content.empty().append($("<h4>").text("Reviews List"), $("<hr>"))
     // content.append($("<h4>").text("Reviews List"), $("<hr>"))
     reviews.forEach(function(review) {
-      console.log(review)
+      console.log(reviews.id)
       let cardbody = $("<div>").addClass("card-body")
       let title = $("<h5>").addClass("mb-0").text(review.title)
       // let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review.post.email}`)
       let description = $("<p>").addClass("card-text").text(review.description)
-      let btn = $("<button>").addClass("btn btn-dark attend").data("id", review.id).text("Following")
-      cardbody.append(title, description, btn)
+      let btn = $("<button>").addClass("btn btn-dark follow").data("id", review.id).text("Follow")
+      cardbody.append(title, description)
       // get all member information for specific review from the server
       // getMembers(review.id).then(function(members) {
       //   console.log("MEMBERS:", members)
@@ -106,16 +106,22 @@ $(document).ready (function (){
   }
   // function to render reviews that the user is following based on data sent through reviews parameter
   let renderReviewsFollowing = function(reviews) {
-    console.log("REVIEWS", reviews)
-    let content = $(".contents")
+    console.log("REVIEWS FOLLOWING", reviews)
+    let content = $("#contents")
     content.empty().append($("<h4>").text("Reviews I'm Following"), $("<hr>"))
     reviews.forEach(function(review) {
       let cardbody = $("<div>").addClass("card-body")
-      let title = $("<h5>").addClass("mb-0").text(review["Review.title"])
-      let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review["Review.post.email"]}`)
-      let description = $("<p>").addClass("card-text").text(review["Review.description"])
-      let btn = $("<button>").addClass("btn btn-dark unattend").data("id", review["Review.id"]).text("Unfollow")
-      getMembers(review["Review.id"]).then(function(members) {
+      // let title = $("<h5>").addClass("mb-0").text(review["Review.title"])
+      let title = $("<h5>").addClass("mb-0").text(review.title)
+      // let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review["Review.post.email"]}`)
+      let post = $("<div>").addClass("d-flex text-muted").text(`Posted by ${review.post.email}`)
+      // let description = $("<p>").addClass("card-text").text(review["Review.description"])
+      let description = $("<p>").addClass("card-text").text(review.description)
+      // let btn = $("<button>").addClass("btn btn-dark unattend").data("id", review["Review.id"]).text("Unfollow")
+      let btn = $("<button>").addClass("btn btn-dark unattend").data("id", review.id).text("Unfollow")
+      // getMembers(review["Review.id"]).then(function(members) {
+      
+      getMembers(review.id).then(function(members) {
         let guests = $("<div>").addClass("ttip ml-auto").text("Following: " + members.length)
         let tooltip = $("<span>").addClass("ttiptext")
         let guestlist = $("<ul>").addClass("list-group")
@@ -369,6 +375,7 @@ $(document).ready (function (){
   })
   // follow button in view reviews component
   $(document).on("click", "button.follow", function(review) {
+    console.log("Follow Btn Clicked", review)
     review.preventDefault();
     // let btn = this button since this = document
     let btn = review.target;
@@ -377,7 +384,7 @@ $(document).ready (function (){
       UserId: userId,
       ReviewId: reviewId
     }
-    attendReview(data).then(function(follow){
+    followReview(data).then(function(follow){
       if (follow) {
         window.location.replace("./following")
       } else {
@@ -387,6 +394,7 @@ $(document).ready (function (){
   })
   // delete button in my reviews component
   $(document).on("click", "button.delete", function(review) {
+    console.log("Delete Btn Working")
     review.preventDefault();
     let btn = review.target;
     let reviewId = $(btn).data("id");
