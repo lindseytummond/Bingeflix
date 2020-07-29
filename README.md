@@ -8,11 +8,11 @@ It allows users to see other people’s reviews as well as save their own review
 + Danielle Pollesche: [GitHub](https://github.com/pollesche02)
     * HTML
     * CSS
-- Dylan Jambro : [GitHub](https://github.com/djambro44)
+- Dylan Jambro: [GitHub](https://github.com/djambro44)
     * OMDB API
 + Jenen Neihart: [GitHub](https://github.com/neihartjenen)
     * Models & Associations
-+ Lindsey Tummond: [GitHub](https://github.com/lindseytummond)
+- Lindsey Tummond: [GitHub](https://github.com/lindseytummond)
     * OAuth
     * API and HTML Routes
 
@@ -23,6 +23,11 @@ It allows users to see other people’s reviews as well as save their own review
 ## Learning Points:
 - Utilization of GitHub and collaborating as a team, ensuring correct use of pulling and pushing items to respective branches and master branch.
 - Understanding of multiple files, how to link file structure, interact as a team project, and use of Agile methodologies.
+
+## Future Enhancements
+-	Add a ‘like’ button to track other reviews from Users
+-	Create a rending list for reviews
+-	Incorporate the OMDB API with the user models
 
 ## Technologies:
 -   HTML
@@ -43,14 +48,15 @@ It allows users to see other people’s reviews as well as save their own review
 ## How the app works:
 Use the following link https://sheltered-depths-77546.herokuapp.com/ to open the application. <br>
 
-1.  Use navigation column on the left to target a section of the app.
-2.	Heat Map utilizes Rapid API to showcase confirmed cases of Covid-19 based on the latest information.
-3.	News Section pulls data from New York Times API in real time.
-4.	Stock Market section pull stock data from Alpha Vantage.
-5.	Lastly, the Comment section allows users to post where they are located and information other users may find helpful.
+1.	Users have the option to Sign Up if they are a new user or Log In if they have been to the app prior.
+2.	Once authorization is complete, the left navigation bar allows the user to:
+	*	Look Up Binges - Search via the OMDB API for shows
+	*	View TV Reviews - Search all reviews posted on the app
+	*	My TV Reviews - Track all reviews the logged in user has created
+	*	Create TV Reviews - Add reviews for TV shows
 
 
 ## App Example:
 <p align="center">
-  <img src="assets/bingeflix-readme.gif">
+  <img src="public/assets/images/bingeflix-readme.png">
 </p>
