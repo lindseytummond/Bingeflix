@@ -1,53 +1,56 @@
-# BINGEFLIX
+# BingeFlix
+
+### Overview:
+The app allows users to create their own reviews for their favorite or not so favorite TV shows. 
+It allows users to see other people’s reviews as well as save their own reviews.
+
+## Creators & Contributions:
++ Danielle Pollesche: [GitHub](https://github.com/pollesche02)
+    * HTML
+    * CSS
+- Dylan Jambro : [GitHub](https://github.com/djambro44)
+    * OMDB API
++ Jenen Neihart: [GitHub](https://github.com/neihartjenen)
+    * Models & Associations
++ Lindsey Tummond: [GitHub](https://github.com/lindseytummond)
+    * OAuth
+    * API and HTML Routes
+
+## Motivations: 
+-   Create a fun and interactive app to lookup TV shows via OMDB, create, and read TV reviews
+-   Provide a simple application for admitting binging TV shows is fun!
+
+## Learning Points:
+- Utilization of GitHub and collaborating as a team, ensuring correct use of pulling and pushing items to respective branches and master branch.
+- Understanding of multiple files, how to link file structure, interact as a team project, and use of Agile methodologies.
+
+## Technologies:
+-   HTML
+-   CSS
+-   Bootstrap
+-   UI Kit
+-   Javascript
+-   jQuery 
+-   AJAX 
+-   MySQL
+-   Sequelize
+-   Express
+-   Passport.js
+-   OMDB
+-   GitHub
+-   Heroku
+
+## How the app works:
+Use the following link https://sheltered-depths-77546.herokuapp.com/ to open the application. <br>
+
+1.  Use navigation column on the left to target a section of the app.
+2.	Heat Map utilizes Rapid API to showcase confirmed cases of Covid-19 based on the latest information.
+3.	News Section pulls data from New York Times API in real time.
+4.	Stock Market section pull stock data from Alpha Vantage.
+5.	Lastly, the Comment section allows users to post where they are located and information other users may find helpful.
 
 
-BINGEFLIX LINK -   https://secret-bayou-81319.herokuapp.com/
-
-
-* Team Members: Dylan Jambro, Lindsey Tummond, Jenen Neihart, Danielle Pollesche
-
-
-* Project Description: This app is to allow you to create your own review for your favorite or not so favorite show. 
-It will allow you to see other people’s reviews as well as save your reviews
-
-
-On the main screen you will want to choose if you log in because you are a returning user or sign up because you’re a new user. Once you have done either action it will take you to your own personal sign in page. Here you will have 3 different options. First you will see the tab to click on for the home screen and you will be able to see all the new updated reviews. Next you will see the Reviews tab. Here if you click on this you will be able to search for the reviews you are wanting to view. In addition on your home screen you can click on the button that says “ Create TV Reveiws” and you will be able to create your own review here. If you want to keep track of your reviews, that’s no problem all the reviews that you make are stored. Simply click on the link “My TV Reviews” and you will see a list of all your reviews.
-
-
-•	MVP:
-
-
-
-# Technologies Used: 
-
-1.	JQuery
-    a.	Access to change the screen content
-2.	Ajax 
-    a.	Allows different information to be changed behind the scenes
-3.	MYSQL
-    a.	This is the database that holds the different reviews and client information
-4.	Express
-    a.	For HTML Routing and API’s
-5.	Sequilize
-    a.	JS Style access to MYSQL database
-6.	Passport JS
-    a.	Password Protected User Database
-7.	Bootstrap
-    a.	Front-End Framework
-8.	UIKit
-    a.	Front-End Framework
-9.	Heroku
-    a.	Platform for App
-
-
-
-
-# Getting Started
-
-Must Install First
-•	MySql
-•	Node.js
-
-Installing:
-
-If you want to view the site from the Users Perspective you can visit it through Heroku Here:  https://secret-bayou-81319.herokuapp.com/
+## App Example:
+<p align="center">
+  <img src="assets/bingeflix-readme.gif">
+</p>
