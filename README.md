@@ -58,5 +58,5 @@ Use the following link https://sheltered-depths-77546.herokuapp.com/ to open the
 
 ## App Example:
 <p align="center">
-  <img src="public/assets/images/bingeflix-readme.png">
+  <img src="public/assets/images/bingeflix-readme.gif">
 </p>
